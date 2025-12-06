@@ -1,0 +1,40 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      target: dev
+    container_name: backend-dev
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    env_file:
+      - .env
+    command: ["pnpm", "run", "dev"]
+
+  frontend:
+    build:
+      context: ./frontend
+      target: dev
+    container_name: frontend-dev
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    env_file:
+      - .env
+    command: ["pnpm", "run", "dev", "--", "--host"]
+
+  detector:
+    build:
+      context: ./detector
+      target: dev
+    container_name: detector-dev
+    volumes:
+      - ./detector:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env

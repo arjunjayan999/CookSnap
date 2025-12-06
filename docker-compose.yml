@@ -1,0 +1,28 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      target: prod
+    container_name: backend
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+
+  frontend:
+    build:
+      context: ./frontend
+      target: prod
+    container_name: frontend
+    ports:
+      - "80:80"
+
+  detector:
+    build:
+      context: ./detector
+      target: prod
+    container_name: detector
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"

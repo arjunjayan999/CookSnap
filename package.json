@@ -1,0 +1,20 @@
+{
+  "name": "cooksnapv1-monorepo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CookSnap MERN + YOLO monorepo",
+  "scripts": {
+    "dev": "pnpm -r --parallel dev",
+    "dev:frontend": "pnpm -F frontend dev",
+    "dev:backend": "pnpm -F backend dev",
+    "dev:detector": "pnpm -F detector dev",
+    "build": "pnpm -F frontend build",
+    "start": "pnpm -r --parallel start",
+    "start:frontend": "pnpm -F frontend preview",
+    "start:backend": "pnpm -F backend start",
+    "start:detector": "pnpm -F detector start"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
