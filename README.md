@@ -9,17 +9,25 @@ CookSnap is a small full-stack project that detects ingredients from images and 
 - **Frontend**: Vite + React app (in `frontend/`).
 
 **Run (development)**
-Use Docker Compose to start services locally (recommended):
+This repository uses `pnpm` workspaces. From the project root you can install dependencies and run services.
+
+Install all workspace dependencies:
 
 ```
-docker-compose up --build
+pnpm install
 ```
 
-If you prefer to run services individually:
+Run all services in parallel (development):
 
-- Backend: `cd backend && npm install && npm run dev`
-- Detector: `cd detector && pip install -r requirements.txt && python main.py`
-- Frontend: `cd frontend && npm install && npm run dev`
+```
+pnpm dev
+```
+
+Run services individually from the project root:
+
+- Backend: `pnpm dev:backend` (or `pnpm -F backend dev`)
+- Detector: `pnpm dev:detector` (use `pnpm -F detector install` first to create the Python venv)
+- Frontend: `pnpm dev:frontend` (or `pnpm -F frontend dev`)
 
 **Files & structure**
 
@@ -35,34 +43,29 @@ If you prefer to run services individually:
 
 _This README was generated to provide quick onboarding and per-folder READMEs were added._
 
-## Docker (docker-compose)
+## Development Notes (pnpm workspace)
 
-This project includes a `docker-compose.yml` at the project root that brings up the frontend, backend, detector, and a MongoDB instance.
+Service URLs (development defaults):
 
 - Frontend: `http://localhost:5173` (Vite dev server)
 - Backend API: `http://localhost:3000`
 - Detector: `http://localhost:8000` (POST `/detect`)
 
-Bring everything up with:
+Common commands (run from repository root):
 
-```bash
-docker-compose up --build
 ```
+pnpm install            # install workspace deps
+pnpm dev                # run all dev services in parallel
+pnpm build              # build frontend
+pnpm start              # run start scripts in parallel (preview/server)
 
-Run in detached mode:
-
-```bash
-docker-compose up --build -d
-```
-
-Stop and remove containers:
-
-```bash
-docker-compose down
+pnpm dev:frontend       # run frontend only
+pnpm dev:backend        # run backend only
+pnpm dev:detector       # run detector only
 ```
 
 Notes:
 
-- The `mongo` service uses a named volume `mongo_data` to persist data.
-- Environment variables for the backend are read from the `environment` section in `docker-compose.yml` (you can override with `.env` or extend the compose file for production).
-- The frontend Dockerfile runs the Vite dev server (good for development). For production you can replace the `frontend` service with a container that serves the built `dist` directory (nginx or static server).
+- The detector uses Python and creates a virtual environment when you run `pnpm -F detector install`.
+- Environment variables for each service are documented in the service READMEs.
+- If you still want to run services individually without `pnpm` you can follow the per-service README instructions.

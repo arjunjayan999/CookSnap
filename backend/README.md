@@ -22,15 +22,33 @@ This folder contains the Node.js + Express API server for CookSnap.
 
 **Run (development)**
 
+From the repository root use the pnpm workspace commands. Install workspace dependencies once:
+
 ```
-cd backend
-npm install
-npm run dev
+pnpm install
+```
+
+Run the backend in development:
+
+```
+pnpm dev:backend
+```
+
+Or target the package directly:
+
+```
+pnpm -F backend dev
 ```
 
 **Seed data**
 
-- A seed script exists at `backend/scripts/seed.js`. Run `node scripts/seed.js` after starting the server (ensure DB env is set).
+- A seed script exists at `backend/scripts/seed.js`. Run it from the repo root with:
+
+```
+pnpm -F backend seed
+```
+
+Ensure the backend can reach the MongoDB instance and required env vars are set before seeding.
 
 **Notes**
 

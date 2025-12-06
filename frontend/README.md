@@ -10,16 +10,23 @@ This folder contains the frontend application built with React + Vite.
 
 **Run (development)**
 
+From the repository root install workspace dependencies and run the frontend:
+
 ```
-cd frontend
-npm install
-npm run dev
+pnpm install
+pnpm dev:frontend
+```
+
+Or run the frontend directly from its package:
+
+```
+pnpm -F frontend dev
 ```
 
 **Build**
 
 ```
-npm run build
+pnpm -F frontend build
 ```
 
 **Notes**

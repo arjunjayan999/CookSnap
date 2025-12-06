@@ -10,6 +10,22 @@ This folder contains the image detection service used by CookSnap to detect ingr
 
 **Run (development)**
 
+This project provides `pnpm` convenience scripts for setting up and running the detector. From the repository root you can:
+
+```
+pnpm install
+pnpm dev:detector
+```
+
+Alternatively, to prepare the Python virtual environment for the detector (Windows):
+
+```
+pnpm -F detector install
+pnpm -F detector dev
+```
+
+If you prefer to do it manually:
+
 1. Create a Python virtual environment and install dependencies:
 
 ```
