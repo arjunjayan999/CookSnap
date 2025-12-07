@@ -8,7 +8,7 @@ router.post("/signup", signup);
 router.post("/login", login);
 
 router.get(
-  "/oauth/google",
+  "/google",
   passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
