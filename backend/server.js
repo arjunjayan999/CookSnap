@@ -29,6 +29,10 @@ app.use(passport.initialize());
 
 connectDB();
 
+app.get("/healthz", (req, res) => {
+  res.status(200).json({ ok: true });
+});
+
 app.use("/api/auth", authRoutes);
 app.use("/api/pantry", pantryRoutes);
 app.use("/api/recipes", recipesRoutes);
