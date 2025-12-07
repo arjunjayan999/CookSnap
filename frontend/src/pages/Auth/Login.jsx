@@ -42,7 +42,7 @@ export default function Login() {
   const oauthGoogle = () => {
     window.location.href = `${
       import.meta.env.VITE_API_URL
-    }/api/auth/oauth/google`;
+    }/api/auth/google`;
   };
 
   return (
