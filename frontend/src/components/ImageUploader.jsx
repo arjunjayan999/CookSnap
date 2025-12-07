@@ -64,6 +64,17 @@ export default function ImageUploader({ onUpload }) {
       const res = await api.post("/api/detect", form, {
         headers: { "Content-Type": "multipart/form-data" },
       });
+      if (res.data.mock) {
+        toast.warning("Detector offline", {
+          description:
+            "Model is local. These are mock detections. Cloud GPUs are expensive😿",
+        });
+      }
+      if (res.data.length === 0) {
+        toast.error("AI failed to detect ingredients", {
+          description: "Try a clearer image with better lighting.",
+        });
+      }
       let data = res.data;
       if (data && data.detections) data = data.detections;
       if (!Array.isArray(data)) data = [];
@@ -79,11 +90,6 @@ export default function ImageUploader({ onUpload }) {
       setShowModal(true);
     } catch (err) {
       console.error("Detect error", err);
-      toast.error("AI failed to detect ingredients", {
-        description:
-          err.response?.data?.message ||
-          "Try a clearer image with better lighting.",
-      });
     } finally {
       setLoading(false);
     }
