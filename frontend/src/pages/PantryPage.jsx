@@ -1,7 +1,7 @@
 import React from "react";
 import { usePantry } from "../contexts/PantryContext";
 import PantryList from "../components/PantryList";
-
+import { Link } from "react-router-dom";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import PantryListSkeleton from "@/components/PantryListSkeleton";
@@ -26,9 +26,9 @@ export default function PantryPage() {
 
   return (
     <div>
-      <div className="flex items-center justify-between mt-5">
-        <h1 className="text-2xl font-semibold">My Pantry</h1>
-        <div className="flex items-center gap-2">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mt-5">
+        <h1 className="text-2xl font-semibold text-center">My Pantry</h1>
+        <div className="flex items-center justify-center gap-2">
           <Button onClick={exportCSV} variant="outline">
             <FileSpreadsheet />
             Export CSV
@@ -43,7 +43,7 @@ export default function PantryPage() {
           </Button>
         </div>
       </div>
-      <div className="text-sm mt-3 text-muted-foreground">
+      <div className="text-sm mt-3 text-muted-foreground text-center sm:text-left">
         Select the ingredients you'd like to get recipe suggestions for.
       </div>
       <div className="mt-8">
@@ -57,6 +57,14 @@ export default function PantryPage() {
           <PantryList />
         )}
       </div>
+      <Link to="/recipes" className="flex justify-end mt-3">
+        <Button
+          variant="secondary"
+          className="bg-primary text-secondary transition-colors duration-300 ease-in-out hover:bg-secondary hover:text-primary"
+        >
+          Search Recipes
+        </Button>
+      </Link>
     </div>
   );
 }

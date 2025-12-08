@@ -159,7 +159,7 @@ export default function IngredientConfirmModal({
           {items.length !== 0 ? (
             <>
               <DialogTitle>Verify Ingredients Before Saving</DialogTitle>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground hidden sm:block">
                 Edit ingredient details before saving them to your pantry.
               </p>
             </>
@@ -182,13 +182,13 @@ export default function IngredientConfirmModal({
               return (
                 <div
                   key={idx}
-                  className={`flex items-start gap-4 p-4 rounded-lg border-2 shadow-sm hover:shadow-md bg-card transition duration-200 ease-in hover:text-foreground${
+                  className={`flex flex-col sm:flex-row items-start gap-4 p-4 rounded-lg border-2 shadow-sm hover:shadow-md bg-card transition duration-200 ease-in hover:text-foreground${
                     low
                       ? " border-l-4 border-destructive bg-destructive/10"
                       : ""
                   }`}
                 >
-                  <div className="w-24 h-24 bg-muted flex items-center justify-center overflow-hidden rounded">
+                  <div className="w-24 h-24 bg-muted flex items-center justify-center overflow-hidden rounded mx-auto sm:mx-0">
                     {it.crop ? (
                       <img
                         src={it.crop}
@@ -202,8 +202,8 @@ export default function IngredientConfirmModal({
                     )}
                   </div>
 
-                  <div className="flex-1 space-y-2">
-                    <div className="flex items-center gap-2">
+                  <div className="flex-1 space-y-2 w-full">
+                    <div className="flex flex-col sm:flex-row sm:items-center gap-2 w-full">
                       <Input
                         autoFocus={low}
                         placeholder="Enter Ingredient Name"
@@ -212,13 +212,13 @@ export default function IngredientConfirmModal({
                         className="flex-1 "
                         required
                       />
-                      <div className="flex items-center gap-2 mt-1">
-                        <div className="w-20 h-1 bg-muted rounded">
+                      <div className="flex items-center gap-2 mt-1 w-full sm:w-auto">
+                        <div className="flex-1 sm:w-20 h-1 bg-muted rounded">
                           <div
                             className={
                               low
-                                ? `h-1 rounded bg-destructive`
-                                : `h-1 rounded bg-primary`
+                                ? "h-1 rounded bg-destructive"
+                                : "h-1 rounded bg-primary"
                             }
                             style={{
                               width: `${Math.round(
@@ -239,7 +239,7 @@ export default function IngredientConfirmModal({
                         type="number"
                         min="1"
                         step="1"
-                        className="w-20"
+                        className="sm:w-20"
                         value={it.quantity}
                         onChange={(e) => updateQuantity(idx, e.target.value)}
                       />
@@ -291,8 +291,8 @@ export default function IngredientConfirmModal({
                     </div>
 
                     {low && (
-                      <div className="text-xs font-medium text-destructive">
-                        <AlertTriangle size={18} className="inline mr-2" />
+                      <div className="text-xs font-medium text-destructive flex">
+                        <AlertTriangle size={18} className=" mr-2" />
                         Low Confidence — Please Verify or Correct the Label.
                       </div>
                     )}
@@ -315,7 +315,7 @@ export default function IngredientConfirmModal({
           </div>
         </ScrollArea>
 
-        <DialogFooter className="mt-2 flex items-center">
+        <DialogFooter className="mt-2 flex flex-row items-center justify-center gap-3">
           <Button variant="outline" onClick={onCancel}>
             Dismiss
           </Button>

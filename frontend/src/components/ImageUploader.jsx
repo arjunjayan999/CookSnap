@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import api from "../services/api";
 import IngredientConfirmModal from "./IngredientConfirmModal";
 import { usePantry } from "../contexts/PantryContext";
-
+import { Link } from "react-router-dom";
 import { toast } from "sonner";
 
 import { Card, CardHeader, CardContent, CardTitle } from "@/components/ui/card";
@@ -238,6 +238,14 @@ export default function ImageUploader({ onUpload }) {
           )}
         </CardContent>
       </Card>
+      <Link to="/pantry" className="flex justify-center">
+        <Button
+          variant="secondary"
+          className="bg-primary text-secondary transition-colors duration-300 ease-in-out hover:bg-secondary hover:text-primary"
+        >
+          Check Your Pantry
+        </Button>
+      </Link>
       <Card>
         <CardHeader>
           <CardTitle className="flex items-center space-x-2">

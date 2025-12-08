@@ -69,11 +69,11 @@ export default function PantryList() {
                 <div className="flex gap-2">
                   <Input
                     type="number"
+                    className="min-w-8"
                     value={quantityVal}
                     onChange={(e) => setQuantityVal(e.target.value)}
                     min="1"
                     step="any"
-                    className="w-24"
                     required
                   />
 
@@ -127,20 +127,20 @@ export default function PantryList() {
 
           <div className="flex items-center gap-2">
             {editing === idx ? (
-              <>
-                <Button size="sm" onClick={() => saveEdit(idx, it)}>
+              <div className="flex flex-col gap-3">
+                <Button className="w-fit" onClick={() => saveEdit(idx, it)}>
                   <Save />
-                  Save
+                  <span className=" hidden sm:inline">Save</span>
                 </Button>
                 <Button
-                  size="sm"
+                  className="w-fit"
                   variant="outline"
                   onClick={() => setEditing(null)}
                 >
                   <CircleX />
-                  Cancel
+                  <span className="hidden sm:inline">Cancel</span>
                 </Button>
-              </>
+              </div>
             ) : (
               <>
                 <Button
