@@ -65,6 +65,7 @@ pnpm dev:detector       # run detector only
 ```
 
 Notes:
+adsf
 
 - The detector uses Python and creates a virtual environment when you run `pnpm -F detector install`.
 - Environment variables for each service are documented in the service READMEs.
