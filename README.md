@@ -32,7 +32,7 @@ Run services individually from the project root:
 **Files & structure**
 
 - `backend/` — API server, routes, models, and controllers.
-- `detector/` — image detector service (PyTorch model + Flask/FastAPI wrapper).
+- `detector/` — image detector service (PyTorch model + FastAPI wrapper).
 - `frontend/` — React UI (Vite).
 
 **Next steps**
@@ -40,8 +40,6 @@ Run services individually from the project root:
 - See `backend/README.md`, `detector/README.md`, and `frontend/README.md` for per-service instructions and env variables.
 
 ---
-
-_This README was generated to provide quick onboarding and per-folder READMEs were added._
 
 ## Development Notes (pnpm workspace)
 
