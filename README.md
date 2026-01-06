@@ -67,3 +67,4 @@ Notes:
 - The detector uses Python and creates a virtual environment when you run `pnpm -F detector install`.
 - Environment variables for each service are documented in the service READMEs.
 - If you still want to run services individually without `pnpm` you can follow the per-service README instructions.
+- You need a YOLO model.pt file for the model to detect images otherwise it runs on a mock mode.
